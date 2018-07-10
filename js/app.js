@@ -17,10 +17,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    // minSpeed = 50
-    // maxSpeed = 350
     this.x += this.speed * dt;
-    // need to work on random speed so the minSpeed  actaully sets at 50 and maxSpeed is 350 when including dt
 
     if (this.x >505) {
       this.x = -500;
@@ -35,13 +32,40 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-let Player = function(xPStartingPoint, yPStartingPoint) {
+let Player = function(Speed, xPStartingPoint, yPStartingPoint) {
   this.sprite = 'images/char-boy.png';
+  this.speed = Speed;
   this.x = xPStartingPoint;
   this.y = yPStartingPoint;
 };
 
-Player.prototype.update = function(dt) {};
+Player.prototype.update = function(dt) {
+   this.speed = this.speed * dt;
+
+Player.prototype.handleInput = function(allowedKeys) {
+  switch (allowedKeys) {
+    case 'left':
+      if (this.x > 0) {
+        this.x -= 100;
+      }
+      break;
+    case 'right':
+      if (this.x < 400) {
+       this.x += 100;
+      }
+      break;
+    case 'up':
+      if (this.y > 55) {
+        this.y -= 85;
+      }
+      break;
+    case 'down':
+      if (this.y < 395 ) {
+        this.y += 85;
+     }
+   }
+ }
+};
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -51,25 +75,23 @@ Player.prototype.render = function() {
 // Place the player object in a variable called player
 
 // Player should start at x,y cordinates of 200,400, tihs puts them in the middle of the game board
-const player = new Player(200, 400);
+const player = new Player(5, 200, 400);
+// player moves up and down at 85, and left to right at 100
 const allEnemies = [];
 
-// Enemy speed should be capped at 350 and min 50, so they are neither to fast or to slow
-
-// const enemyStartingRows = gameBoardRows[Math.floor(Math.random() * gameBoardRows.length)];
-const gameBoardRows = [310, 225, 145, 60, -25];
+const gameBoardRows = [310, 225, 140, 55, -30];
 const gameBoardColumns = [0, 100, 200, 300, 400];
 const enemyStartingRows = [310, 225, 145, 60];
 const enemyStartingColumns = [-200, -300, -400];
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 6; i++) {
   allEnemies.push( new Enemy());
 };
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
