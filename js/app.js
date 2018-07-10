@@ -63,12 +63,17 @@ const allEnemies = [];
 // Enemy min y axis should be 300, or it starts in the player starting area
 // const enemy = new Enemy(1, 1, 300);
 // allEnemies.push(enemy); //tester code
+const gameBoardRows = [300, 200, 100, 0];
+const gameBoardColumns = [0, 100, 200, 300, 400];
+
+const enemyStartingRows = gameBoardRows[Math.floor(Math.random() * gameBoardRows.length)];
+const enemyStartingColumns = [0, 100, 200, 300, 400];
 
 for (let i = 0; i < 10; i++) {
   minY=300
   maxY=100
-  const enemy = new Enemy(1,-300,Math.floor(Math.random() * (maxY - minY) + minY));
-  allEnemies.push(enemy);
+  allEnemies.push(new Enemy(1, -300, enemyStartingRows));
+  // allEnemies.push(enemy);
 };
 
 // This listens for key presses and sends the keys to your
