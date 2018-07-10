@@ -1,20 +1,14 @@
-document.onmousemove = function(e){
-var x = e.pageX;
-var y = e.pageY;
-e.target.title = "X is "+x+" and Y is "+y;
-}
-
 // Enemies our player must avoid
-let Enemy = function(Speed, xEStartingPoint, yEStartingPoint) {
+let Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = xEStartingPoint;
-    this.y = yEStartingPoint;
-    this.speed = Speed;
+    this.x = enemyStartingColumns[Math.floor(Math.random() * enemyStartingColumns.length)];
+    this.y = enemyStartingRows[Math.floor(Math.random() * enemyStartingRows.length)];
+    this.speed = Math.floor(Math.random() * (450 - 100) + 100);
 };
 
 // Update the enemy's position, required method for game
@@ -24,8 +18,8 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     // minSpeed = 50
-    maxSpeed = 350
-    this.x += this.speed * dt * Math.floor(Math.random() * (maxSpeed - this.speed) + this.speed);
+    // maxSpeed = 350
+    this.x += this.speed * dt;
     // need to work on random speed so the minSpeed  actaully sets at 50 and maxSpeed is 350 when including dt
 
     if (this.x >505) {
@@ -59,21 +53,17 @@ Player.prototype.render = function() {
 // Player should start at x,y cordinates of 200,400, tihs puts them in the middle of the game board
 const player = new Player(200, 400);
 const allEnemies = [];
+
 // Enemy speed should be capped at 350 and min 50, so they are neither to fast or to slow
-// Enemy min y axis should be 300, or it starts in the player starting area
-// const enemy = new Enemy(1, 1, 300);
-// allEnemies.push(enemy); //tester code
-const gameBoardRows = [300, 200, 100, 0];
+
+// const enemyStartingRows = gameBoardRows[Math.floor(Math.random() * gameBoardRows.length)];
+const gameBoardRows = [310, 225, 145, 60, -25];
 const gameBoardColumns = [0, 100, 200, 300, 400];
+const enemyStartingRows = [310, 225, 145, 60];
+const enemyStartingColumns = [-200, -300, -400];
 
-const enemyStartingRows = gameBoardRows[Math.floor(Math.random() * gameBoardRows.length)];
-const enemyStartingColumns = [0, 100, 200, 300, 400];
-
-for (let i = 0; i < 10; i++) {
-  minY=300
-  maxY=100
-  allEnemies.push(new Enemy(1, -300, enemyStartingRows));
-  // allEnemies.push(enemy);
+for (let i = 0; i < 5; i++) {
+  allEnemies.push( new Enemy());
 };
 
 // This listens for key presses and sends the keys to your
