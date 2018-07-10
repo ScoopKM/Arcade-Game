@@ -22,6 +22,14 @@ Enemy.prototype.update = function(dt) {
     if (this.x >505) {
       this.x = -500;
     };
+
+    if (player.x < this.x + 50 &&
+        player.x + 50 > this.x &&
+        player.y < this.y + 42 &&
+        42 + player.y > this.y) {
+        player.x = 200;
+        player.y = 380;
+    };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -41,6 +49,7 @@ let Player = function(Speed, xPStartingPoint, yPStartingPoint) {
 
 Player.prototype.update = function(dt) {
    this.speed = this.speed * dt;
+};
 
 Player.prototype.handleInput = function(allowedKeys) {
   switch (allowedKeys) {
@@ -55,17 +64,17 @@ Player.prototype.handleInput = function(allowedKeys) {
       }
       break;
     case 'up':
-      if (this.y > 55) {
+      if (this.y > -10) {
         this.y -= 85;
       }
       break;
     case 'down':
-      if (this.y < 395 ) {
+      if (this.y < 330 ) {
         this.y += 85;
-     }
-   }
- }
+    }
+  }
 };
+
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
