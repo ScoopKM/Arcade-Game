@@ -1,6 +1,34 @@
-frontend-nanodegree-arcade-game
-===============================
+# Arcade Game Project
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Table of Contents
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+* [How to Play](#how-to-play)
+* [Instructions on How to Make Your Own Game](#instructions-on-how-to-make-your-own-game)
+
+## How to Play
+
+To play the game follow the link for the live version
+https://scoopkm.github.io/fend-arcade-game/
+
+The game engine creates a 5 column by 6 row gameboard, that is populated by a player character and multiple enemy characters. The player
+character is the boy sprite that appears in the middle of the bottom grass row, and the enemy characters are the bug sprites that move across the
+gameboard. The enemy characters appear randomly in the second grass row and all stone rows, and each enemy has a random speed set to them.
+The goal of the game is to move the player character across the gameboard and successfully reach the water. Once you reach the water the player
+character will reset to its starting position. Along your way to the water, if the player character runs into an enemy character the player will
+reset back to its staring position.
+
+## Instructions on How to Make Your Own Game
+
+To get your own starter code click here: https://github.com/udacity/frontend-nanodegree-arcade-game
+
+The starter code comes with an `index.html, style.css, images, app.js`, and `engine.js`. All artwork you will need for this project is contained
+in the images folder, unless you wish to create a custom image. If you chose to create a custom image, I would add that to the images folder. The
+main file you will be working in will be `app.js`, and possibly `engine.js`, depending on how you choose to handle collisions between enemy and
+player characters. You can add more functionalities to the game, such as a pause feature by editing `engine.js` if you choose to. As for
+`index.html` and `style.css`, you will not have to edit them for the game to work. To get started on building your own game open up `index.html`
+in your browser.
+
+<b>IMPORTANT NOTICE:</b> When opening `index.html` for the first time, it will appear blank. This is normal, and you should look to at the errors
+in your browser's console log and notes in the starter code to navigate your way on what to do first and eventually display your gameboard.
+
+For more detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
