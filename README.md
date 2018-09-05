@@ -8,14 +8,14 @@
 ## How to Play
 
 To play the game follow the link for the live version
-https://scoopkm.github.io/fend-arcade-game/
+https://scoopkm.github.io/Arcade-Game/
 
 The game engine creates a 5 column by 6 row gameboard, that is populated by a player character and multiple enemy characters. The player
 character is the boy sprite, that you control with the up, down, left, and right keyboard keys. The player character appears in the middle of the bottom grass row, and the enemy characters are the bug sprites that move across the gameboard. The enemy characters appear randomly in the second grass row and all stone rows, and each enemy has a random speed set to them. The goal of the game is to move the player character across the gameboard and successfully reach the water. Once you reach the water the player character will reset to its starting position. Along your way to the water, if the player character runs into an enemy character the player will reset back to its staring position.
 
 ## Instructions on How to Make Your Own Game
 
-To get your own starter code click here: https://scoopkm.github.io/Arcade-Game/
+To get your own starter code click here: https://github.com/udacity/frontend-nanodegree-arcade-game
 
 Once you're at the starter code repository you will want to fork the repository to your personal GitHub. From there you will want to clone/download the forked repository to your local machine, and open `index.html` in the browser to see your arcade game come to live as you make changes to the code.
 
